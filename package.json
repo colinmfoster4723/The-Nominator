@@ -1,0 +1,21 @@
+{
+  "name": "the-nominator",
+  "version": "v0.0.1",
+  "description": "Start playing music from the Oscars if a user in a voice channel talks for more than 5 minutes",
+  "main": "index.js",
+  "scripts": {
+    "start:dev": "nodemon ./src/index.js"
+  },
+  "repository": "https://github.com/colinmfoster4723/The-Nominator",
+  "author": "Colin M Foster",
+  "license": "MIT",
+  "dependencies": {
+    "@discordjs/rest": "^1.4.0",
+    "axios": "^1.2.1",
+    "discord.js": "^14.7.1"
+  },
+  "devDependencies": {
+    "dotenv": "^16.0.3",
+    "nodemon": "^2.0.20"
+  }
+}
