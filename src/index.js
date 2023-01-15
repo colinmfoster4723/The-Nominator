@@ -1,13 +1,18 @@
 const fs = require("node:fs");
 const path = require("node:path");
 const { Client, Collection, Events, GatewayIntentBits } = require("discord.js");
-const axios = require("axios");
 const { botToken } = require("./config.json");
-const SERVICE_ACCOUNT = require("./serviceAccount.json");
 const { ConfigCommands } = require("./deploy-commands");
-const { VerifyRedeem } = require("./messages");
-
-const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+const voice = require("@discordjs/voice");
+const client = new Client({
+  intents: [
+    GatewayIntentBits.Guilds,
+    GatewayIntentBits.MessageContent,
+    GatewayIntentBits.GuildVoiceStates,
+    GatewayIntentBits.GuildMembers,
+    GatewayIntentBits.GuildMessages,
+  ],
+});
 
 client.on("ready", async (interaction) => {
   console.log("Bot is online");
@@ -55,11 +60,10 @@ client.on(Events.InteractionCreate, async (interaction) => {
     if (
       interaction.member
         .permissionsIn(interaction.channel)
-        .has("ManageRoles") ||
-      commandName === "help" ||
-      commandName === "revoke"
+        .has("Administrator") ||
+      commandName === "help"
     )
-      await command.execute(interaction, db);
+      await command.execute(interaction);
     else
       return interaction.reply({
         content: "You don't have permission to use this command",
@@ -74,5 +78,3 @@ client.on(Events.InteractionCreate, async (interaction) => {
   }
 });
 client.login(botToken);
-
-//verify server subscription every 12 hours
