@@ -9,7 +9,7 @@ module.exports = {
           .setColor(0xe3971e)
           .setTitle("Guide:")
           .setDescription(
-            "*Here is a list of all of the commands:* \n \n **/help** : list all commands \n **/timer** : set the amount of time until a user is nominated (default = 60 seconds) \n **/join** : allow the-nominator to join the voice channel you are currently in.\n\n *The-Nominator will start playing music from the oscars if a member speaks longer than the timer. If a member has spoken for more than 3 seconds their timer is reset"
+            "*Here is a list of all of the commands:* \n \n **/help** : list all commands \n **/timer** : set the amount of time until a user is nominated (default = 60 seconds) \n **/join** : allow the-nominator to join the voice channel you are currently in.\n\n *The-Nominator will start playing music if a member speaks longer than the timer. If a member has spoken for more than 3 seconds their timer is reset"
           ),
       ],
       ephemeral: true,
