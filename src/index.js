@@ -3,7 +3,15 @@ const path = require("node:path");
 const { Client, Collection, Events, GatewayIntentBits } = require("discord.js");
 const { botToken } = require("./config.json");
 const { ConfigCommands } = require("./deploy-commands");
-const voice = require("@discordjs/voice");
+const admin = require("firebase-admin");
+const SERVICE_ACCOUNT = require("./serviceAccount.json");
+//Initialize Firebase
+admin.initializeApp({
+  credential: admin.credential.cert(SERVICE_ACCOUNT),
+  databaseUrl: "https://daotools-88497-default-rtdb.firebaseio.com",
+});
+const db = admin.firestore();
+
 const client = new Client({
   intents: [
     GatewayIntentBits.Guilds,
@@ -27,7 +35,6 @@ client.on("guildCreate", async (guild) => {
 });
 
 client.commands = new Collection();
-//import commands first
 const commandsPath = path.join(__dirname, "commands");
 const commandFiles = fs
   .readdirSync(commandsPath)
@@ -61,10 +68,13 @@ client.on(Events.InteractionCreate, async (interaction) => {
       interaction.member
         .permissionsIn(interaction.channel)
         .has("Administrator") ||
-      commandName === "help"
-    )
+      commandName === "help" ||
+      commandName === "donate"
+    ) {
+      if (commandName === "timer" || commandName === "ceremony")
+        return await command.execute(interaction, db);
       await command.execute(interaction);
-    else
+    } else
       return interaction.reply({
         content: "You don't have permission to use this command",
         ephemeral: true,

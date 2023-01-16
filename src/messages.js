@@ -1,9 +1,4 @@
-const {
-  ActionRowBuilder,
-  ButtonBuilder,
-  EmbedBuilder,
-} = require("@discordjs/builders");
-const { ButtonStyle } = require("discord.js");
+const { EmbedBuilder } = require("@discordjs/builders");
 
 module.exports = {
   HelpMessage() {
@@ -14,7 +9,7 @@ module.exports = {
           .setColor(0x25b5cf)
           .setTitle("Guide:")
           .setDescription(
-            "***The-Nominator*** will start playing music from the Oscars if a member has been talking for more than 5 minutes.  The member will receive a nomination in the chat!"
+            "*Here is a list of all of the commands:* \n \n **/help** : list all commands \n **/timer** : set the amount of time until a user is nominated (default = 60 seconds) \n **/join** : allow the-nominator to join the voice channel you are currently in.\n\n *The-Nominator will start playing music from the oscars if a member speaks longer than the timer. If a member has spoken for more than 3 seconds their timer is reset"
           ),
       ],
       ephemeral: true,
@@ -28,6 +23,19 @@ module.exports = {
           .setColor(0xf5c842)
           .setTitle(`Congratulations ${username}!`)
           .setDescription("You have been Nominated! 🎉🏆🎉"),
+      ],
+    };
+  },
+  Donate() {
+    return {
+      content: "",
+      embeds: [
+        new EmbedBuilder()
+          .setColor(0x8b3dd9)
+          .setTitle(`Support The-Nominator v0.1.0!`)
+          .setDescription(
+            "***If you'd like to support this project and future updates :***\n\n>>> - donate ETH or other tokens to 0x80581C6e88Ce00095F85cdf24bB760f16d6eC0D6\n\n - follow me on twitter => https://twitter.com/namedotget\n\n *please dm me on twitter if you have any questions, comments or concerns, thanks for using The-Nominator! 😄*"
+          ),
       ],
     };
   },

@@ -1,18 +1,20 @@
 # The-Nominator v0.1.0
 ---
-The-Nominator is a Discord bot that starts playing music from the oscars if a member speaks in a voice channel for more than 5 minutes.
+Introducing The-Nominator, your ultimate solution for managing voice chat on your Discord server! With this bot, you can easily set a timer for how long a person can speak before they are nominated. Once the timer runs out, a message will appear in the chat of the voice channel, and music will start playing to signify the end of their turn. Keep your voice chats organized and running smoothly with The-Nominator.
 
 # Setup
 ---
-To get started with The-Nominator, you will need to have admin privileges on the Discord server where you want to use the bot.
+To get started with The-Nominator, you will need to have admin privileges on the Discord server where you want to use the bot. Ensure that you give The-Nominator privledges to send messages and interact with voice channels.
 
-1) Invite The-Nominator to your server
-2) Join a voice-channel
-3) Use the **/join** command to allow The-Nominator to join the voice-channel you are in
+1) Invite The-Nominator to your server.
+2) Join a voice-channel.
+3) Use the **/ceremony** command to allow The-Nominator to join the voice-channel you are in and start a ceremony.
 
-Once the The-Nominator bot has joined the voice-channel, it will monitor member's speaking statuses. If a member speaks for more than 5 minutes music from the Oscar's starts playing.
+Once the The-Nominator bot has joined the voice-channel, it will monitor member's speaking statuses. If a member speaks for more than the configured time (30 second default) the user will be nominated.
 
 # Commands
 ---
-**/help** - Tutorial
-**/join** - Allow the bot to join the voice-channel you are currently in
+- **/help** : Tutorial
+- **/timer** : Set the amount of time until a user is nominated for speaking (30 second default)
+- **/ceremony** : Allow the bot to join the voice-channel you are currently in and start a ceremony
+- **/end** : End the ceremony and disconnect The-Nominator

@@ -1,19 +1,21 @@
 {
   "name": "the-nominator",
   "version": "v0.0.1",
-  "description": "Start playing music from the Oscars if a user in a voice channel talks for more than 5 minutes",
+  "description": "a discord bot that nominates a member if they speak longer than the timer",
   "main": "index.js",
   "scripts": {
     "start:dev": "nodemon ./src/index.js"
   },
   "repository": "https://github.com/colinmfoster4723/The-Nominator",
-  "author": "Colin M Foster",
+  "author": "Colin M Foster (name.get)",
   "license": "MIT",
   "dependencies": {
+    "@discordjs/opus": "^0.9.0",
     "@discordjs/rest": "^1.4.0",
     "@discordjs/voice": "^0.14.0",
-    "axios": "^1.2.1",
-    "discord.js": "^14.7.1"
+    "discord.js": "^14.7.1",
+    "firebase-admin": "^11.4.1",
+    "libsodium-wrappers": "^0.7.10"
   },
   "devDependencies": {
     "dotenv": "^16.0.3",
