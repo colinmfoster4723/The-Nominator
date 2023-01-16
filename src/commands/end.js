@@ -21,5 +21,6 @@ module.exports = {
       });
 
     connection.destroy();
+    interaction.reply({ content: "The ceremony has ended", ephemeral: true });
   },
 };
