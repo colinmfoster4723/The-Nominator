@@ -11,11 +11,11 @@ To get started with The-Nominator, you will need to have admin privileges on the
 3) Use the **/ceremony** command to allow The-Nominator to join the voice-channel you are in and start a ceremony.
 4) Use the **/end** command when you want The-Nominator to leave the voice-channel
 
-Once the The-Nominator bot has joined the voice-channel, it will monitor member's speaking statuses. If a member speaks for more than the configured time (30 second default) the user will be nominated.
+Once the The-Nominator bot has joined the voice-channel, it will monitor member's speaking statuses. If a member speaks longer than the timer the user will be nominated.
 
 # Commands
 ---
-- **/timer** : Set the amount of time until a user is nominated for speaking (30 second default)
+- **/timer** : Set the amount of time until a user is nominated for speaking
 - **/ceremony** : Allow the bot to join the voice-channel you are currently in and start a ceremony
 - **/end** : End the ceremony and disconnect The-Nominator
 - **/donate** : Learn how you can support The-Nominator

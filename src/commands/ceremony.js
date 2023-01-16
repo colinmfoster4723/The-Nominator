@@ -8,7 +8,6 @@ const {
   StreamType,
 } = require("@discordjs/voice");
 const { createReadStream } = require("node:fs");
-const { join } = require("node:path");
 module.exports = {
   data: new SlashCommandBuilder()
     .setName("ceremony")
