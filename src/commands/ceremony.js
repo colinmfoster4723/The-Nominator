@@ -51,7 +51,7 @@ module.exports = {
     const guildRef = db.collection("The-Nominator").doc(guild.id);
     const guildData = await guildRef.get();
     let timer;
-    guildData && guildData._fieldsProto.timer
+    guildData && guildData._fieldsProto?.timer
       ? (timer = guildData._fieldsProto.timer.integerValue)
       : 60;
 
