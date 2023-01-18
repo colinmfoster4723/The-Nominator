@@ -6,6 +6,7 @@ const {
   createAudioResource,
   NoSubscriberBehavior,
   StreamType,
+  getVoiceConnection,
 } = require("@discordjs/voice");
 const { createReadStream } = require("node:fs");
 module.exports = {
@@ -24,7 +25,15 @@ module.exports = {
         content: "Please join a voice-channel and try again",
         ephemeral: true,
       });
-    let connection = joinVoiceChannel({
+    //check if The-Nominator has already joined the voice-channel and started a ceremony
+    if (getVoiceConnection(interaction.channel.guild.id)) {
+      return interaction.reply({
+        content: "A ceremony has already been started",
+        ephemeral: true,
+      });
+    }
+
+    const connection = joinVoiceChannel({
       channelId: voiceChannel.id,
       guildId: voiceChannel.guild.id,
       selfDeaf: false,
