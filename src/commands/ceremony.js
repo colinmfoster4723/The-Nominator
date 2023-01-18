@@ -36,6 +36,18 @@ module.exports = {
       content: "The-Nominator has successfully joined the voice-channel",
     });
 
+    const player = createAudioPlayer({
+      behaviors: {
+        noSubscriber: NoSubscriberBehavior.Pause,
+      },
+    });
+    const resource = createAudioResource(
+      createReadStream("src/awards.ogg", {
+        inputType: StreamType.OggOpus,
+      })
+    );
+    player.on("error", (error) => console.log(error));
+
     const guildRef = db.collection("The-Nominator").doc(guild.id);
     const guildData = await guildRef.get();
     let timer;
@@ -56,17 +68,6 @@ module.exports = {
         } else speakers[userId].start = now;
         //Check if the user has been speaking for longer than the timer
         if ((now - speakers[userId].start) / 1000 >= timer) {
-          const player = createAudioPlayer({
-            behaviors: {
-              noSubscriber: NoSubscriberBehavior.Pause,
-            },
-          });
-          const resource = createAudioResource(
-            createReadStream("src/awards.ogg", {
-              inputType: StreamType.OggOpus,
-            })
-          );
-          player.on("error", (error) => console.log(error));
           connection.subscribe(player);
           player.play(resource);
           console.log(`${interaction.user.username} has been Nominated!`);
