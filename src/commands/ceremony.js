@@ -76,12 +76,15 @@ module.exports = {
           );
         } else speakers[userId].start = now;
         //Check if the user has been speaking for longer than the timer
-        if ((now - speakers[userId].start) / 1000 >= timer) {
+        if ((now - speakers[userId].start) / 1000 >= 1) {
           connection.subscribe(player);
           player.play(resource);
-          console.log(`${interaction.user.username} has been Nominated!`);
+          const username = interaction.guild.members.cache.find(
+            (m) => m.id === userId
+          ).user.username;
+          console.log(`${username} has been Nominated!`);
           speakers[userId] = false;
-          voiceChannel.send(Nomination(interaction.user.username));
+          voiceChannel.send(Nomination(username));
           setTimeout(() => {
             player.stop();
           }, 15000);
