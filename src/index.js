@@ -67,7 +67,10 @@ client.on(Events.InteractionCreate, async (interaction) => {
     if (
       interaction.member
         .permissionsIn(interaction.channel)
-        .has("Administrator") ||
+        .has("ManageGuild") ||
+      interaction.member
+        .permissionsIn(interaction.channel)
+        .has("ManageChannels") ||
       commandName === "help" ||
       commandName === "donate"
     ) {
