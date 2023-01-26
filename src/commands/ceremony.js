@@ -50,11 +50,7 @@ module.exports = {
         noSubscriber: NoSubscriberBehavior.Pause,
       },
     });
-    const resource = createAudioResource(
-      createReadStream("src/awards.ogg", {
-        inputType: StreamType.OggOpus,
-      })
-    );
+
     player.on("error", (error) => console.log(error));
 
     const guildRef = db.collection("The-Nominator").doc(guild.id);
@@ -77,6 +73,12 @@ module.exports = {
         } else speakers[userId].start = now;
         //Check if the user has been speaking for longer than the timer
         if ((now - speakers[userId].start) / 1000 >= timer) {
+          const resource = createAudioResource(
+            createReadStream("src/awards.ogg", {
+              inputType: StreamType.OggOpus,
+              inlineVolume: true,
+            })
+          );
           connection.subscribe(player);
           player.play(resource);
           const username = interaction.guild.members.cache.find(
@@ -84,7 +86,9 @@ module.exports = {
           ).user.username;
           console.log(`${username} has been Nominated!`);
           speakers[userId] = false;
-          voiceChannel.send(Nomination(username));
+          //only send message if channel is a voice-channel (wont send when on Stage)
+          if (voiceChannel.type === "2")
+            voiceChannel?.send(Nomination(username));
           setTimeout(() => {
             player.stop();
           }, 15000);
