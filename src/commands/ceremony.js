@@ -76,7 +76,7 @@ module.exports = {
           );
         } else speakers[userId].start = now;
         //Check if the user has been speaking for longer than the timer
-        if ((now - speakers[userId].start) / 1000 >= 1) {
+        if ((now - speakers[userId].start) / 1000 >= timer) {
           connection.subscribe(player);
           player.play(resource);
           const username = interaction.guild.members.cache.find(
