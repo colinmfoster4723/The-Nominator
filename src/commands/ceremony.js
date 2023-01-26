@@ -62,17 +62,22 @@ module.exports = {
 
     const speakers = {};
 
+    async function getUsername(userId) {
+      return await interaction.guild.members.cache.find((m) => m.id === userId)
+        .user.username;
+    }
+
     connection.receiver.speaking.on("start", async (userId) => {
       if (speakers[userId]) {
         const now = Date.now();
         //Check if user last spoke, less than 3 seconds ago
         if ((now - speakers[userId].end) / 1000 <= 3) {
-          console.log(
-            `less than 3 seconds since ${interaction.user.username} last spoke`
-          );
+          const username = await getUsername(userId);
+          console.log(`less than 3 seconds since ${username} last spoke`);
         } else speakers[userId].start = now;
         //Check if the user has been speaking for longer than the timer
         if ((now - speakers[userId].start) / 1000 >= timer) {
+          const username = await getUsername(userId);
           const resource = createAudioResource(
             createReadStream("src/awards.ogg", {
               inputType: StreamType.OggOpus,
@@ -81,9 +86,6 @@ module.exports = {
           );
           connection.subscribe(player);
           player.play(resource);
-          const username = interaction.guild.members.cache.find(
-            (m) => m.id === userId
-          ).user.username;
           console.log(`${username} has been Nominated!`);
           speakers[userId] = false;
           //only send message if channel is a voice-channel (wont send when on Stage)
