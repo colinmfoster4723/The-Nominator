@@ -24,3 +24,12 @@ Once the The-Nominator bot has joined the voice-channel, it will monitor member'
 # Gotchas
 ---
 1) Make sure to reset the ceremony if you adjust the timer while a ceremony is active.
+
+## Versions
+---
+- **v0.1.0** - *Jan 16 2023*
+    * Initial set-up
+    * Added core features including voice detection and timer
+    * Added slash commands
+- **v0.1.1** - *Jan 23 2023*
+    * Added compatability for stages in discord
