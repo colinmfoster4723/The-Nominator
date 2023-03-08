@@ -23,14 +23,14 @@ const client = new Client({
 });
 
 client.on("ready", async (interaction) => {
-  console.log("Bot is online");
+  console.log("The-Nominator is online");
   client.guilds.cache.map(async (guild) => {
     await ConfigCommands(guild.id);
   });
 });
 
 client.on("guildCreate", async (guild) => {
-  console.log(`Role-ify has joined guild ${guild.id}`);
+  console.log(`The-Nominator has joined guild ${guild.id}`);
   await ConfigCommands(guild.id);
 });
 

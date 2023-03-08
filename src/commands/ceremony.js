@@ -42,7 +42,8 @@ module.exports = {
     });
 
     interaction.reply({
-      content: "The-Nominator has successfully joined the voice-channel",
+      content: "The ceremony has started!",
+      ephemeral: true,
     });
 
     const player = createAudioPlayer({
@@ -68,6 +69,12 @@ module.exports = {
     }
 
     connection.receiver.speaking.on("start", async (userId) => {
+      // check if user is white-listed
+      const member = await guild.members.cache.find((m) => m.id === userId);
+      if (
+        await member.roles.cache.find((r) => r.name === "Nominator-Whitelist")
+      )
+        return (speakers[userId] = {});
       if (speakers[userId]) {
         const now = Date.now();
         //Check if user last spoke, less than 3 seconds ago
@@ -99,9 +106,10 @@ module.exports = {
       console.log(speakers);
     });
 
-    connection.receiver.speaking.on("end", (userId) => {
-      if (speakers[userId]) speakers[userId].end = Date.now();
-      console.log(speakers);
+    connection.receiver.speaking.on("end", async (userId) => {
+      if (speakers[userId]) {
+        speakers[userId].end = Date.now();
+      }
     });
   },
 };

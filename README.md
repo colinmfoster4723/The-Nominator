@@ -6,10 +6,10 @@ Introducing The-Nominator, your ultimate solution for managing voice chat on you
 ---
 To get started with The-Nominator, you will need to have admin privileges on the Discord server where you want to use the bot. Ensure that you give The-Nominator privledges to send messages and interact with voice channels.
 
-1) Invite The-Nominator to your server [Invite The-Nominator](https://discord.com/api/oauth2/authorize?client_id=1063920584632832080&permissions=274927208704&scope=bot%20applications.commands)
-2) Set a custom timer by using the **/timer** command. The default timer is 60 seconds long.
-3) Use the **/ceremony** command to allow The-Nominator to join the voice-channel you are in and start a ceremony.
-4) Use the **/end** command when you want The-Nominator to leave the voice-channel
+1. Invite The-Nominator to your server [Invite The-Nominator](https://discord.com/api/oauth2/authorize?client_id=1063920584632832080&permissions=274927208704&scope=bot%20applications.commands)
+2. Set a custom timer by using the **/timer** command. The default timer is 60 seconds long.
+3. Use the **/ceremony** command to allow The-Nominator to join the voice-channel you are in and start a ceremony.
+4. Use the **/end** command when you want The-Nominator to leave the voice-channel
 
 Once the The-Nominator bot has joined the voice-channel, it will monitor member's speaking statuses. If a member speaks longer than the timer the user will be nominated.
 
@@ -23,7 +23,7 @@ Once the The-Nominator bot has joined the voice-channel, it will monitor member'
 
 # Gotchas
 ---
-1) Make sure to reset the ceremony if you adjust the timer while a ceremony is active.
+1. Make sure to reset the ceremony if you adjust the timer while a ceremony is active.
 
 ## Versions
 ---
@@ -33,3 +33,5 @@ Once the The-Nominator bot has joined the voice-channel, it will monitor member'
     * Added slash commands
 - **v0.1.1** - *Jan 23 2023*
     * Added compatability for stages in discord
+- **v0.2.0** - *Mar 07 2023*
+    * Added whitelist toggle command: add/remove Nominator Whitelist role to user, whitelisted users cannot be nominated by The Nominator
