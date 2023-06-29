@@ -1,4 +1,4 @@
-Copyright Colin M Foster
+Copyright Colin M  2022-2023
 
 MIT License
 
